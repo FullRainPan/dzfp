@@ -3,7 +3,7 @@
 # @Time : 2021-04-01 11:19
 # @Author : Pan
 # @Version：V 0.1
-# @File : main.py
+# @File : run_function.py
 # @desc : 解析电子发票信息，将内容写入excel台账
 
 import base64
@@ -193,7 +193,7 @@ def identify_same_row(file, ws):
             ws.cell(r, 14).fill = fill_du  # 设置重复内容浅黄色标注
 
 
-def main(files_list):
+def run_function(files_list):
     """
     @param files_list:传入文件列表
     """
@@ -232,7 +232,7 @@ def main(files_list):
 
 if __name__ == '__main__':
     files = check_data()
-    data_list = main(files)
+    data_list = run_function(files)
     t = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
     save_path = os.path.join(dst_path, f'{t}-电子发票管理台账.xlsx')
     write_to_excel(path=save_path, sheetStr='1', info=info_list_cn, data=data_list)
